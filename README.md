@@ -136,29 +136,40 @@ npm start
 
 ---
 
-## 📤 Hướng Dẫn Đẩy Lên GitHub (Publish to GitHub)
+## 📤 Hướng Dẫn Đẩy Lên GitHub & Deploy GitHub Pages
 
+### 1. Đẩy mã nguồn lên GitHub
 Nếu bạn vừa tải mã nguồn về hoặc muốn đẩy lên repository mới trên GitHub:
 
 ```bash
-# 1. Khởi tạo Git repository
-git init
-
-# 2. Thêm tất cả các file
+# 1. Thêm tất cả các file
 git add .
 
-# 3. Tạo commit đầu tiên
-git commit -m "feat: initial commit - toan 7 giua ky 1 GDPT 2018 app"
+# 2. Tạo commit
+git commit -m "feat: setup github pages workflow and relative paths"
 
-# 4. Đổi tên branch chính thành main
+# 3. Đổi tên branch chính thành main
 git branch -M main
 
-# 5. Liên kết tới repository GitHub của bạn (thay URL bằng repo của bạn)
-git remote add origin https://github.com/<tai-khoan-cua-ban>/toan-7-on-thi-giua-ky-1.git
-
-# 6. Đẩy mã nguồn lên GitHub
+# 4. Đẩy mã nguồn lên GitHub
 git push -u origin main
 ```
+
+### 2. 🌐 Khắc Phục Lỗi Build GitHub Pages (Lỗi Jekyll: pages-build-deployment)
+Nếu bạn gặp lỗi build màu đỏ như:
+> `GitHub Pages: github-pages v... GitHub Pages: jekyll v...`
+
+**Nguyên nhân**: Mặc định GitHub Pages sử dụng engine **Jekyll** (chỉ dành cho website tĩnh / blog Jekyll cũ), không thể tự biên dịch ứng dụng React + Vite + TypeScript.
+
+**Cách khắc phục cực kỳ đơn giản (Đã cấu hình sẵn trong mã nguồn)**:
+1. Vào repository của bạn trên GitHub.
+2. Bấm vào tab **Settings** (ở thanh menu trên cùng của repository).
+3. Ở menu bên trái, tìm và chọn mục **Pages** (mục con của Code and automation).
+4. Tại phần **Build and deployment**:
+   - Ở mục **Source**: Click vào dropdown và chọn **"GitHub Actions"** (thay vì "Deploy from a branch").
+5. Ngay lập tức, GitHub sẽ tự động kích hoạt file workflow `.github/workflows/deploy.yml` (đã được tạo sẵn trong project) để build Vite và phát hành website lên link dạng:  
+   `https://<tai-khoan-cua-ban>.github.io/<ten-repo>/`
+6. Các file CSS, Javascript và tài nguyên hình ảnh sẽ tự động tải mượt mà nhờ cấu hình đường dẫn tương đối `base: './'` trong `vite.config.ts`.
 
 ---
 
