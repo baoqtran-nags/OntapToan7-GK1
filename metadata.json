@@ -1,0 +1,8 @@
+{
+  "name": "Toán 7 GDPT 2018 - Ôn Thi Giữa Kỳ I Thông Minh",
+  "description": "Ứng dụng ôn tập và thi thử Toán 7 Giữa học kỳ I theo chương trình GDPT 2018 với 6 bộ đề chuẩn ma trận, hình học tương tác, lời giải chi tiết và trợ lý AI giảng giải.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
